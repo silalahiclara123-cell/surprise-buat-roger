@@ -3,20 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For You</title>
-    <!-- Bootstrap & Animate.css -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:italic,wght@700&display=swap" rel="stylesheet">
+    <title>For You, Roger</title>
     
+    <!-- Link Font & CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:italic,wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
     <style>
         body { 
-            background-color: #121212; /* Hitam pekat agar foto B&W menonjol */
-            color: #e0e0e0; 
+            background-color: #0a0a0a; /* Hitam pekat */
+            color: #ffffff; 
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
+            margin: 0;
         }
-        .hero-section {
+
+        /* Hero Section */
+        .hero {
             height: 100vh;
             display: flex;
             align-items: center;
@@ -24,85 +28,121 @@
             flex-direction: column;
             text-align: center;
         }
+
         h1 { 
             font-family: 'Playfair Display', serif; 
-            font-size: 3.5rem; 
-            color: #ffffff;
+            font-size: 3rem; 
             letter-spacing: -1px;
+            margin-bottom: 10px;
         }
-        .photo-grid img {
+
+        .scroll-text {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #666;
+            margin-top: 20px;
+        }
+
+        /* Message Card */
+        .message-section {
+            padding: 80px 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .quote {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            font-weight: 300;
+            color: #ccc;
+        }
+
+        /* Gallery 3x3 */
+        .gallery-container {
+            padding: 0 10px 100px 10px;
+        }
+
+        .photo-item img {
             width: 100%;
-            aspect-ratio: 1 / 1;
+            aspect-ratio: 1/1; /* Biar kotak sempurna */
             object-fit: cover;
-            filter: grayscale(100%); /* Memastikan semua tetap B&W */
-            border-radius: 4px;
+            filter: grayscale(100%); /* Efek B&W */
+            border: 1px solid #222;
             transition: all 0.5s ease;
-            border: 1px solid #333;
+            display: block;
         }
-        .photo-grid img:hover {
-            filter: grayscale(0%); /* Sedikit kejutan: jadi berwarna saat disentuh */
-            transform: scale(1.02);
+
+        .photo-item img:hover {
+            filter: grayscale(0%); /* Muncul warna dikit kalau di-hover */
+            transform: scale(1.03);
             border-color: #fff;
         }
-        .message-card {
-            background: #1e1e1e;
-            padding: 30px;
-            border-radius: 10px;
-            border: 1px solid #333;
-            margin: 50px 0;
-        }
-        /* Style untuk Audio Player */
-        .audio-player {
+
+        /* Audio Player Minimalis */
+        .audio-container {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-            background: rgba(255,255,255,0.1);
-            padding: 10px;
-            border-radius: 50px;
-            backdrop-filter: blur(5px);
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 99;
+            opacity: 0.5;
+            transition: opacity 0.3s;
+        }
+
+        .audio-container:hover { opacity: 1; }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            color: #444;
         }
     </style>
 </head>
 <body>
 
-    <!-- Audio (Ganti link MP3 di bawah dengan lagu favorit kalian) -->
-    <div class="audio-player">
-        <audio id="myAudio" controls loop>
-            <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
+    <!-- Musik Latar -->
+    <div class="audio-container">
+        <audio id="player" loop controls>
+            <!-- Ganti musik.mp3 sesuai nama file lagumu -->
+            <source src="musik.mp3" type="audio/mpeg">
         </audio>
     </div>
 
     <div class="container">
-        <!-- Section 1: Intro -->
-        <section class="hero-section animate__animated animate__fadeIn">
-            <h1 class="animate__animated animate__slideInUp">Subject: You.</h1>
-            <p class="text-muted mt-3">Scroll down, I have something for you.</p>
+        <!-- Intro -->
+        <section class="hero animate__animated animate__fadeIn">
+            <h1>Subject: Roger.</h1>
+            <p class="scroll-text">Keep Scrolling</p>
         </section>
 
-        <!-- Section 2: Pesan -->
-        <div class="message-card animate__animated animate__fadeInUp">
-            <p style="font-style: italic; font-size: 1.1rem; line-height: 1.8;">
-                "I was looking at your photos today and realized how much I miss having you around. So, I built this tiny space just to keep your best frames in one place. You look great in every single one of them."
+        <!-- Pesan Kangen -->
+        <section class="message-section animate__animated animate__fadeInUp">
+            <p class="quote">
+                "I could go anywhere in the world, but I'd still rather be here with you. This is just a small reminder of my favorite views of you"
             </p>
+        </section>
+
+        <!-- Galeri 9 Foto -->
+        <div class="gallery-container">
+            <div class="row g-2">
+                <div class="col-4 photo-item"><img src="foto1.jpg" class="animate__animated animate__zoomIn"></div>
+                <div class="col-4 photo-item"><img src="foto2.jpg" class="animate__animated animate__zoomIn"></div>
+                <div class="col-4 photo-item"><img src="foto3.jpg" class="animate__animated animate__zoomIn"></div>
+                <div class="col-4 photo-item"><img src="foto4.jpg" class="animate__animated animate__zoomIn"></div>
+                <div class="col-4 photo-item"><img src="foto5.jpg" class="animate__animated animate__zoomIn"></div>
+                <div class="col-4 photo-item"><img src="foto6.jpg" class="animate__animated animate__zoomIn"></div>
+                <div class="col-4 photo-item"><img src="foto7.jpg" class="animate__animated animate__zoomIn"></div>
+                <div class="col-4 photo-item"><img src="foto8.jpg" class="animate__animated animate__zoomIn"></div>
+                <div class="col-4 photo-item"><img src="foto9.jpg" class="animate__animated animate__zoomIn"></div>
+            </div>
         </div>
 
-        <!-- Section 3: Gallery 3x3 -->
-        <div class="row g-2 photo-grid">
-            <div class="col-4"><img src="foto1.jpg" class="animate__animated animate__fadeIn"></div>
-            <div class="col-4"><img src="foto2.jpg" class="animate__animated animate__fadeIn"></div>
-            <div class="col-4"><img src="foto3.jpg" class="animate__animated animate__fadeIn"></div>
-            <div class="col-4"><img src="foto4.jpg" class="animate__animated animate__fadeIn"></div>
-            <div class="col-4"><img src="foto5.jpg" class="animate__animated animate__fadeIn"></div>
-            <div class="col-4"><img src="foto6.jpg" class="animate__animated animate__fadeIn"></div>
-            <div class="col-4"><img src="foto7.jpg" class="animate__animated animate__fadeIn"></div>
-            <div class="col-4"><img src="foto8.jpg" class="animate__animated animate__fadeIn"></div>
-            <div class="col-4"><img src="foto9.jpg" class="animate__animated animate__fadeIn"></div>
-        </div>
-
-        <footer class="text-center py-5 mt-5">
-            <p class="text-muted" style="font-size: 0.8rem; letter-spacing: 2px;">MADE BY [NAMAMU] • 2026</p>
+        <footer>
+            CREATED BY YOURS TRULY • 2026
         </footer>
     </div>
 
